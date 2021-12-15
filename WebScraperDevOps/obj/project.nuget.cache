@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "AB8VEqnA0YdxwIDMK5ZYMpbsZ1yq6gg23wiP7xes2wIOzxE9fwPQ+9J1HkMIgX4g+CacE21aznj3iMr1xDIujg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rikko\\OneDrive\\Documenten\\School\\DevOps\\Project\\WebScraperDevOps\\WebScraperDevOps\\WebScraperDevOps.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rikko\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\rikko\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
+    "C:\\Users\\rikko\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\rikko\\.nuget\\packages\\selenium.webdriver.chromedriver\\96.0.4664.4500\\selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512",
+    "C:\\Users\\rikko\\.nuget\\packages\\selenium.webdriverbackedselenium\\4.1.0\\selenium.webdriverbackedselenium.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
