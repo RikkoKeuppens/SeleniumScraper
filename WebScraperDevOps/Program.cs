@@ -74,11 +74,17 @@ namespace WebScraper
                             string videoViews = driver.FindElement(By.XPath(Views)).Text;
 
                             Console.WriteLine("----------------------------------------------------------------------------------");
-                            Console.WriteLine("Link van de video: " + videoLink);
                             Console.WriteLine("Titel van de video: " + videoTitle);
                             Console.WriteLine("Auteur: " + videoAuthor);
                             Console.WriteLine("Aantal weergaven: " + videoViews);
-                            counter++;
+                            Console.WriteLine("Link van de video: " + videoLink);
+
+                            string filepath = "c:/DevOpsScraperOutput/" + title.ToString() + ".csv";
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
+                            {
+                                file.WriteLine(videoTitle + "," + videoAuthor + "," + videoViews + "," + videoLink);
+                            }
+                                counter++;
                         }
                         catch
                         {
@@ -153,6 +159,13 @@ namespace WebScraper
                                 Console.WriteLine("Company name: " + addCompanyName);
                                 Console.WriteLine("Company location: " + addLocation);
                                 Console.WriteLine("link for the add: " + addLink);
+
+                                string filepath = "c:/DevOpsScraperOutput/" + term.ToString() + ".csv";
+                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
+                                {
+                                    file.WriteLine(addTitle + "," + addCompanyName + "," + addLocation + "," + addLink);
+                                }
+
                                 counter++;
                             }
                         }
@@ -248,6 +261,13 @@ namespace WebScraper
                             Console.WriteLine("Date of the article: " + articleDate);
                             Console.WriteLine(articleAuthor);
                             Console.WriteLine("Link to the article: " + articleLink);
+
+                            string filepath = "c:/DevOpsScraperOutput/" + term.ToString() + ".csv";
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
+                            {
+                                file.WriteLine(articleTitle + "," + articleDate + "," + articleAuthor + "," + articleLink);
+                            }
+
                             stopCount = 0;
                         }
                         catch
