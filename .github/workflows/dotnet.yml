@@ -22,8 +22,8 @@ jobs:
       working-directory: .
       run: msbuild SeleniumScraper.csproj -t:rebuild -t:PrepareResources -property:Configuration=Release
       
-    - name: Upload Artifacts
+    - name: Upload an Artifacts
       uses: actions/upload-artifact@v2.2.4
       with:
           name: Scraper
-          path: C:\SeleniumScraper
+          path: ./WebScraperDevOps/bin/Debug/net6.0/
