@@ -79,7 +79,7 @@ namespace WebScraper
                             Console.WriteLine("Aantal weergaven: " + videoViews);
                             Console.WriteLine("Link van de video: " + videoLink);
 
-                            string filepath = "c:/DevOpsScraperOutput/" + title.ToString() + ".csv";
+                            string filepath = "c:/DevOpsScraperOutput/YouTube.csv";
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
                             {
                                 file.WriteLine(videoTitle + "," + videoAuthor + "," + videoViews + "," + videoLink);
@@ -160,7 +160,7 @@ namespace WebScraper
                                 Console.WriteLine("Company location: " + addLocation);
                                 Console.WriteLine("link for the add: " + addLink);
 
-                                string filepath = "c:/DevOpsScraperOutput/" + term.ToString() + ".csv";
+                                string filepath = "c:/DevOpsScraperOutput/Indeed.csv";
                                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
                                 {
                                     file.WriteLine(addTitle + "," + addCompanyName + "," + addLocation + "," + addLink);
@@ -193,14 +193,17 @@ namespace WebScraper
                     driver.Navigate().GoToUrl("https://www.nytimes.com/");
                     driver.Manage().Window.Maximize();
 
-                    var search = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/header/section[1]/div[1]/div[2]/button"));
+                    var coockie = driver.FindElement(By.XPath("//*[@id=\"site-content\"]/div[2]/div[1]/div/div[2]/button"));
+                    coockie.Click();
+
+                    var search = driver.FindElement(By.XPath("//*[@id=\"app\"]/div[2]/div/header/section[1]/div[1]/div[2]/button"));
                     search.Click();
                     var searchTerm = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/header/section[1]/div[1]/div[2]/div/form/div/input"));
                     searchTerm.SendKeys(term);
                     var go = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/header/section[1]/div[1]/div[2]/div/form/button"));
                     go.Click();
 
-                    var date = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/main/div/div[1]/div[2]/div/div/div[1]/div/div/button"));
+                    var date = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/main/div[1]/div[1]/div[2]/div/div/div[1]/div/div/button"));
                     date.Click();
                     var yesterday = driver.FindElement(By.XPath("/html/body/div[1]/div[2]/main/div[1]/div[1]/div[2]/div/div/div[1]/div/div/div/ul/li[2]/button"));
                     yesterday.Click();
@@ -210,7 +213,7 @@ namespace WebScraper
 
                     System.Threading.Thread.Sleep(500); // wait for newest adds
                     Console.WriteLine();
-                    while (counter < 10 && stopCount != 2)
+                    while (counter < 10)
                     {
                         try
                         {
@@ -262,7 +265,7 @@ namespace WebScraper
                             Console.WriteLine(articleAuthor);
                             Console.WriteLine("Link to the article: " + articleLink);
 
-                            string filepath = "c:/DevOpsScraperOutput/" + term.ToString() + ".csv";
+                            string filepath = "c:/DevOpsScraperOutput/NewYorkTimes.csv";
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
                             {
                                 file.WriteLine(articleTitle + "," + articleDate + "," + articleAuthor + "," + articleLink);
@@ -275,18 +278,13 @@ namespace WebScraper
                             counter++;
                             stopCount++;
                         }
+                        if (stopCount == 2)
+                        {
+                            Console.WriteLine("Er zijn geen resultaten voor " + term);
+                            Console.WriteLine("Probeer het opnieuw:");
+                        }
                     }
-                    if (counter == 3)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Er zijn geen resultaten voor " + term);
-                        Console.WriteLine("Probeer het opnieuw:");
-                        Console.WriteLine();
-                    }
-                    if (counter > 3)
-                    {
-                        Console.WriteLine("----------------------------------------------------------------------------------");
-                    }
+
                     Console.WriteLine();
                     Console.WriteLine("Opties: youtube(y), indeed(i), newyorktimes(n) of druk 'ctrl + c' om te stoppen");
                     siteChoice = Console.ReadLine();
