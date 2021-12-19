@@ -19,8 +19,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
 
     - name: publish
-      run: |
-          dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --self-contained true
+      run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true --self-contained true
       
     - name: Upload an Artifacts
       uses: actions/upload-artifact@v2.2.4
