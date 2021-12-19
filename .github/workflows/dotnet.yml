@@ -26,4 +26,4 @@ jobs:
       uses: actions/upload-artifact@v2.2.4
       with:
           name: Scraper
-          path: ./WebScraperDevOps/bin/Debug/net6.0/
+          path: ./WebScraperDevOps/bin/Debug/net6.0/win-x64/publish/**.exe
