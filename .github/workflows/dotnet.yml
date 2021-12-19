@@ -12,10 +12,10 @@ jobs:
       with:
          dotnet-version: 6.0.x
 
-    - name: Install dependencies
+    - name: Install the dependencies
       run: dotnet restore
 
-    - name: Setup MSBuild.exe
+    - name: Setup the MSBuild.exe
       uses: microsoft/setup-msbuild@v1.1
 
     - name: publish
